@@ -26,43 +26,33 @@
     <!-- 宫格 -->
     <van-grid :column-num="5">
       <van-grid-item>
-        <span class="iconfont icon-gouwuchekong"></span>
         <span class="text">码路超市</span>
       </van-grid-item>
       <van-grid-item>
-        <span class="iconfont icon-clothes"></span>
         <span class="text">码路服饰</span>
       </van-grid-item>
       <van-grid-item>
-        <span class="iconfont icon-shangyehuaquanqiu"></span>
         <span class="text">全球购</span>
       </van-grid-item>
       <van-grid-item>
-        <span class="iconfont icon-shengxian-xianhaixian"></span>
         <span class="text">码路生鲜</span>
       </van-grid-item>
       <van-grid-item>
-        <span class="iconfont icon-truckkache"></span>
         <span class="text">码路到家</span>
       </van-grid-item>
       <van-grid-item>
-        <span class="iconfont icon-chongzhi"></span>
         <span class="text">充值缴费</span>
       </van-grid-item>
       <van-grid-item>
-        <span class="iconfont icon-24gl-bag2"></span>
         <span class="text">9.9元拼</span>
       </van-grid-item>
       <van-grid-item>
-        <span class="iconfont icon-youhuiquan"></span>
         <span class="text">领券</span>
       </van-grid-item>
       <van-grid-item>
-        <span class="iconfont icon-shengqian"></span>
         <span class="text">省钱</span>
       </van-grid-item>
       <van-grid-item>
-        <span class="iconfont icon-quanbu"></span>
         <span class="text">全部</span>
       </van-grid-item>
     </van-grid>
@@ -82,6 +72,7 @@ import Goods from "@/components/Goods.vue";
 let route = useRoute();
 let router = useRoute();
 
+let isTop = ref(true);
 let arr = reactive({
   carousels: [],
   hotGoodses: [],
@@ -93,12 +84,20 @@ getHomeData().then((res) => {
   // console.log(res);
   arr.carousels = res.data.carousels;
   res.data.newGoodses.forEach((element) => {
-    newGoodses.push(element);
+    arr.newGoodses.push(element);
   });
   res.data.recommendGoodses.forEach((element) => {
-    recommendGoodses.push(element);
+    arr.recommendGoodses.push(element);
   });
 });
+let changeTop = () => {
+  let t = document.documentElement.scrollTop || document.body.scrollTop;
+  if (t > 50) {
+    isTop.value = false;
+  } else {
+    isTop.value = true;
+  }
+};
 </script>
 <style lang="less" scoped>
 .newshopping {
