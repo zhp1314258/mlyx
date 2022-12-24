@@ -67,7 +67,6 @@
 import { getHomeData } from "@/api/index.js";
 import { reactive, toRefs, onMounted, watch, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import NavBar from "@/components/NavBar.vue";
 import Goods from "@/components/Goods.vue";
 let route = useRoute();
 let router = useRoute();
