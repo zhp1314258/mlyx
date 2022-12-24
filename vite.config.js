@@ -12,7 +12,7 @@ export default defineConfig({
       resolvers: [VantResolver()],
     }),
   ],
-  base: "/",
+  base: "./",
   server: {
     proxy: {
       '/api': {
